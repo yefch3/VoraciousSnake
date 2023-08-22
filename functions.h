@@ -4,6 +4,6 @@ void startUp();
 
 void display();
 
-void updateDirectionAndMove();
+void updateDirection();
 
 void move();

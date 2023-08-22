@@ -45,8 +45,9 @@ void display() {
 	FlushBatchDraw();
 }
 
-void move() {
+void move() {	
 	display();
+	snake->setSpeed(snake->getScore() / 10 + 1);
 	if (snake->isDead() == true) {
 		snake->setDead(true);
 	}
@@ -63,21 +64,22 @@ void move() {
 		}
 	}
 
-	Sleep(500 / snake->getSpeed());
+	Sleep(200 / snake->getSpeed());
 }
 
-void updateDirectionAndMove() {
-	snake->setSpeed(snake->getScore() / 10 + 1);
-
-
-	move();
-
-	
-	if (_kbhit()) {
+void updateDirection() {
+	while (_kbhit()) {
 		char dir = _getch();
+
+		if (dir == 'q') {
+			snake->setDead(true);
+			return;
+		}
+
 		if (dir == snake->getDirection()) {
 			return;
 		}
+
 		if (dir == 'a' && snake->getDirection() != 'R') {
 			snake->setDirection('L');
 		}

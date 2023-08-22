@@ -3,7 +3,8 @@
 int main() {
 	startUp();
 	while (true) {
-		updateDirectionAndMove();
+		move();
+		updateDirection();
 	}
 	return 0;
 }
